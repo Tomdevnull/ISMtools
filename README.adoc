@@ -17,7 +17,7 @@ endif::[]
 = ISMtools {version}
 
 [.lead]
-*Automation tools for https://www.fujitsu.com/de/products/computing/servers/infrastructure-management/[Fujitsu Software Infrastructure Manager (ISM)] using REST API.*
+*Automation tools for https://eu.fsastech.com/eu/products-services/primergy-servers/infrastructure-manager-ism/ [Infrastructure Manager (ISM)] using REST API.*
 
 These are some scripts/examples to automate tasks regarding ISM. Of course there are much more things possible. But you can use this toolset as a platform for own extensions.
 
@@ -47,7 +47,8 @@ IMPORTANT: *#Please note: This toolset is provided W/O ANY WARRANTY and is to be
 |1.0.7|2023-02-28|
 * New commands `ism_get_groupname`, `ism_get_snapfile`, `ism_copy_2ds` +
 + Security enhancement and better error handling for `ism_cmd` +
-+ Additional option for `ism_get_sysrep` to upload it to Fujitsu\'s SFTP server +
++ Additional option for `ism_get_sysrep` to upload it to 
+Fsas Technologies SFTP server +
 + Additional output of filesize for `ism_show_isos` (thanks to mailto:Gerald.Rausch@Fujitsu.com[Gerald Rausch]) +
 x fixed error in `ism_del_iso` (thanks to mailto:Gerald.Rausch@Fujitsu.com[Gerald Rausch])
 |mailto:{email}[{Author}]
@@ -743,7 +744,7 @@ Administrator
 
 [[ism_get_sysrep]]
 ==== `ism_get_sysrep [-o <outputfile>] [-c] <nodename>|<nodeip>|<nodesn>`
-Creates and downloads a System-Report ZIP file which contains the system report and the system event log (SEL). If no outputfile is given then default value _OUTPUTFILE_ defined in <<Configfile>> is used. With option `-c` the output file is copied afterwards to Fujitsu\'s SFTP server to directory `/incoming`.
+Creates and downloads a System-Report ZIP file which contains the system report and the system event log (SEL). If no outputfile is given then default value _OUTPUTFILE_ defined in <<Configfile>> is used. With option `-c` the output file is copied afterwards to Fsas Technologies SFTP server to directory `/incoming`.
 
 [source,shell,indent=8]
 ----
@@ -768,7 +769,7 @@ $ ism_get_sysrep EWAL001056
 
 [[ism_get_snap]]
 ==== `ism_get_snap [-t <days>] [-m part|full] [-c]`
-Creates and downloads an ISM snap file (ZIP format) that can be used for support issues. You can specify the period in _days_ of log files that should be retrieved by parameter `-t`. If no time spec is given then default value _SNAPDAYS_ defined in <<Configfile>> is used. Using `-m` option allows to define whether to generate a full or a partial snap. Default _SNAPMODE_ is defined in <<Configfile>>. With option `-c` the snap file is copied afterwards to Fujitsu\'s SFTP server to directory `/incoming`. After downloading the snap file to your local machine it is deleted at the ISM-VA.
+Creates and downloads an ISM snap file (ZIP format) that can be used for support issues. You can specify the period in _days_ of log files that should be retrieved by parameter `-t`. If no time spec is given then default value _SNAPDAYS_ defined in <<Configfile>> is used. Using `-m` option allows to define whether to generate a full or a partial snap. Default _SNAPMODE_ is defined in <<Configfile>>. With option `-c` the snap file is copied afterwards to Fsas Technologies SFTP server to directory `/incoming`. After downloading the snap file to your local machine it is deleted at the ISM-VA.
 
 [source,shell,indent=8]
 ----
@@ -803,7 +804,7 @@ $ ism_get_co2data
 
 [[ism_copy_2ds]]
 ==== `ism_copy_2ds <file> [<file> ..]`
-Copies one or more files to the `/incoming` directory of Fujitsu's SFTP server. If asked you can use _ftp_ as password.
+Copies one or more files to the `/incoming` directory of Fsas Technologies SFTP server. If asked you can use _ftp_ as password.
 
 [source,shell,indent=8]
 ----
@@ -929,7 +930,7 @@ $ ism_run_refreshnodes "type=server&rackid=1"
 
 [[ism_run_gfupdate]]
 ==== `ism_run_gfupdate [-s]`
-This command refreshs (synchronizes) the ISM VA internal repository with Fujitsu\'s internet repository (aka GlobalFlash). Without argument all available firmware/driver components are downloaded. When you use option `-s` then it runs in _smart_ mode which means only software components are downloaded for servers and their components that are registered in ISM VA.
+This command refreshs (synchronizes) the ISM VA internal repository with Fsas Technologies internet repository (aka GlobalFlash). Without argument all available firmware/driver components are downloaded. When you use option `-s` then it runs in _smart_ mode which means only software components are downloaded for servers and their components that are registered in ISM VA.
 
 CAUTION: You should have enough disk space within your ISM VA to prevent it from running out of space. The whole GlobalFlash repository needs more than 20 GByte!
 
@@ -1078,7 +1079,7 @@ WARNING: And of course, those files should be readable only by their owner (e.g.
 
 == Bibliography
 [bibliography]
-- [[[ISM_REST_API]]] Fujitsu: https://support.ts.fujitsu.com/dl?ID=1bc17707-0d8a-4dda-81b3-a06bd7e0910b[REST API Reference Manual]
+- [[[ISM_REST_API]]] Fsas Technologies: https://support.ts.fujitsu.com/dl?ID=1bc17707-0d8a-4dda-81b3-a06bd7e0910b[REST API Reference Manual]
 
 '''
 
